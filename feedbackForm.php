@@ -1,6 +1,8 @@
 <?php
 require 'config.php';
 $db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+date_default_timezone_set("Europe/Moscow");
+mysqli_query($db, "SET time_zone = 'Europe/Moscow'");
 $name = trim($_POST['userName']);
 $email = trim($_POST['userEmail']);
 $tel = str_replace(" ", "", $_POST['userTel']);
