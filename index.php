@@ -14,7 +14,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <form class="container mt-5" id="feedbackForm" method="post">
-                        <div  id="submitError" class="form-text text-danger d-none text-center">Вы уже отправили заявку</div>
+                        <div  id="submitError" class="form-text text-danger text-center d-none"></div>
                         <div class="mb-3">
                             <label for="userName" class="form-label">Имя</label>
                             <input type="text" class="form-control" name="userName" id="userName" aria-describedby="userNameDesc">

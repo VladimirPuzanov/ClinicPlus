@@ -11,6 +11,12 @@ function isValidTel(telInput) {
   return pattern.test(telInput.replaceAll(" ", ""));
 }
 
+function errorNotification(msg) {
+  const err = document.getElementById("submitError");
+  $("#submitError").removeClass("d-none");
+  err.textContent = msg;
+}
+
 
 $(document).ready(function () {
   $("#modalFeedbackForm").modal('show');
@@ -18,14 +24,13 @@ $(document).ready(function () {
     e.preventDefault();
     const email = emailInput[0].value;
     const tel = telInput[0].value;
-
     if (!isValidEmail(email)) {
-      alert('Пожалуйста введите корректный адрес элетронной почты');
+      errorNotification('Введён некорректный адрес электронной почты');
       return;
     }
 
     if (!isValidTel(tel)) {
-      alert('Введён некорректный телефонный номер');
+      errorNotification('Введён некорректный телефонный номер');
       return;
     }
     $.ajax({
@@ -40,7 +45,7 @@ $(document).ready(function () {
         }
         else {
           if (jsonData.error == "RF") {
-            $("#submitError").removeClass("d-none");
+            errorNotification('Вы уже отравили заявку');
           }
           if (jsonData.error == "NVD") {
             console.log("Не валидные данные");
